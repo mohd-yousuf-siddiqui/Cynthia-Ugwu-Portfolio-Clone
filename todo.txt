@@ -1,0 +1,12 @@
+smoothscrolling - Locomotivejs
+    1. attach loco scroll css
+    2. attach locomotive scroll min js cdn
+    3. smooth scroll code from loco github for js 
+
+gsap - 
+    attach gsap cdn
+
+scrolltrigger
+
+
+
