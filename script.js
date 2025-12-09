@@ -39,18 +39,39 @@ function firstPageAni(){
 };
 
 
+var timeout;
+
 function circleskew(){
+    // default scale value
+    let xscale = 1;
+    let yscale = 1;
+
+    let xprev = 0;
+    let yprev = 0;
+
     window.addEventListener("mousemove", function(e) {
+        clearTimeout(timeout);
         
+        xscale = gsap.utils.clamp(.8,1.2, e.clientX - xprev);
+        yscale = gsap.utils.clamp(.8,1.2, e.clientY - yprev);
+    
+        xprev = e.clientX;
+        yprev = e.clientY; 
+
+        circlemouse(xscale,yscale)
+
+        timeout = setTimeout(function(){
+            document.querySelector("#minicircle").style.transform = `translate(${e.clientX-6}px, ${e.clientY-6}px) scale(${1},${1})`;
+        },100)
     });
 };
 
+circleskew();
 
-
-function circlemouse(){
+function circlemouse(xscale,yscale){
     window.addEventListener("mousemove",function(e){
-        console.log(e);
-        document.querySelector("#minicircle").style.transform = `translate(${e.clientX-6}px, ${e.clientY-6}px)`;
+        // console.log(e);
+        document.querySelector("#minicircle").style.transform = `translate(${e.clientX-6}px, ${e.clientY-6}px) scale(${xscale},${yscale})`;
     });
 };
 
