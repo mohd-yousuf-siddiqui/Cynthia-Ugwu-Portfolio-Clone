@@ -5,8 +5,9 @@ smoothscrolling - Locomotivejs
 
 gsap - 
     attach gsap cdn
+    gsap.timeline() to() and from()
+    gsap clamp()
 
-scrolltrigger
-
+scrolltrigger -
 
 

@@ -39,7 +39,7 @@ function firstPageAni(){
 };
 
 
-var timeout;
+let timeout;
 
 function circleskew(){
     // default scale value
@@ -77,3 +77,42 @@ function circlemouse(xscale,yscale){
 
 circlemouse();
 firstPageAni();
+
+
+document.querySelectorAll(".elem").forEach(function (elem) {
+  let rotate = 0;
+  let diffrot = 0;
+
+  elem.addEventListener("mouseleave", function (dets) {
+    gsap.to(elem.querySelector("img"), {
+      opacity: 0,
+      ease: Power3,
+      duration: 0.5,
+    });
+  });
+
+  elem.addEventListener("mousemove", function (dets) {
+    let diff = dets.clientY - elem.getBoundingClientRect().top;
+    diffrot = dets.clientX - rotate;
+    rotate = dets.clientX;
+    gsap.to(elem.querySelector("img"), {
+      opacity: 1,
+      ease: Power3,
+      top: diff,
+      left: dets.clientX - elem.getBoundingClientRect().left,
+      rotate: gsap.utils.clamp(-20, 20, diffrot * 0.5),
+    });
+  });
+});
+
+
+setInterval(() => {
+  document.getElementById("time").textContent =
+    new Date().toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,              // forces 12-hour format
+      timeZone: 'Asia/Kolkata'   // GMT +5:30
+    });
+}, 1000);
+

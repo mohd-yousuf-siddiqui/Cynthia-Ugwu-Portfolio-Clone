@@ -88,7 +88,7 @@ html,body{
     margin-bottom: 15px;
 }
 
-#heading .blocktext{
+.blocktext{
     width: fit-content;
     display: flex;
     flex-direction: column;
@@ -166,32 +166,35 @@ html,body{
     }
 }
 
-.elem{
-    width: 100%;
-    padding: 4vw 0vw;
-    border-top: 1px solid #888;
+.elem {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
+    width: 100%;
+    padding: 4vw 0vw;
+    padding-right: 0;
+    border-top: 1px solid #888;
 }
 
-.elem h1{
-    opacity: .6;
+.elem h1 {
     text-transform: uppercase;
     font-size: 6.8vw;
+    opacity: .6;
 }
 
-.elemlast{
+.elemlast {
     border-bottom: 1px solid #888;
 }
 
-.elem img{
-    display: none;
-    position: absolute;
+.elem img {
+    opacity: 0;
+    pointer-events: none;
+    height: 140%;
     z-index: 999;
-    height: 150%;
-    border-radius: 5px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
 }
 
 #about{
